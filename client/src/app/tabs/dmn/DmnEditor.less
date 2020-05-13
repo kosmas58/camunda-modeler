@@ -9,14 +9,126 @@
     position: relative;
   }
 
-  .dmn-decision-table-container,
-  .viewer-container {
-    padding: 10px;
+  .dmn-js-parent {
+    display: flex;
+    flex-direction: row;
   }
 
-  .djs-overlay .drill-down-overlay {
-    padding: 0px 5px 2px;
+  .dmn-overview-container {
+    position: relative;
+    width: 250px;
+    max-width: 50%;
+
+    background-color: #fafafa;
+    border-right: solid 1px #ddd;
+
+    .dmn-drd-container {
+      overflow: hidden;
+    }
+
+    &.collapsed {
+      width: 0 !important;
+
+      .dmn-drd-container {
+        display: none;
+      }
+    }
+
+    &.hidden {
+      display: none;
+    }
+
+    .toggle {
+      color: #444;
+      position: absolute;
+      right: -1px;
+      top: 50%;
+      background: #fafafa;
+      padding: 7px 10px;
+      white-space: nowrap;
+      font-size: 13px;
+      border: solid 1px #CCC;
+      border-bottom: none;
+      border-radius: 3px 3px 0 0;
+      transform: rotate(90deg) translate(0, 0);
+      transform-origin: right bottom;
+      z-index: 10;
+      cursor: default;
+      user-select: none;
+    }
+
+    .edit-drd {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      white-space: nowrap;
+
+      background: #fff;
+      padding: 8px;
+      border: solid 1px #ddd;
+      border-radius: 2px;
+      font-size: 14px;
+      color: #444;
+      font-weight: bold;
+      cursor: default;
+      outline: none;
+      z-index: 10;
+    }
+
+    .djs-element {
+      .djs-outline {
+        display: none;
+      }
+
+      .djs-visual rect {
+        fill: #fafafa !important;
+      }
+
+      &.can-open {
+        &.open,
+        &:hover {
+          .djs-visual {
+            rect {
+              stroke: #4285f4 !important;
+              fill: #cfe0fc !important;
+            }
+  
+            text {
+              fill: #4285f4 !important;
+            }
+          }
+        }
+      }
+    }
+
+    .djs-overlay .drill-down-overlay {
+      background:transparent;
+      pointer-events: none;
+      color: #000;
+    }
   }
+
+  .dmn-decision-table-container,
+  .viewer-container {
+    width: initial;
+    padding: 10px;
+    padding-top: 60px;
+    padding-left: 40px;
+  }
+
+  .decision-id,
+  .decision-table-id {
+    display: none;
+  }
+
+  // .djs-overlay .drill-down-overlay {
+  //   width: 26px;
+  //   height: 26px;
+  //   line-height: 26px;
+  //   background: #4285f4;
+  //   text-align: center;
+  //   border-radius: 2px;
+  // }
 
   .djs-container > .dmn-definitions {
     display: none;

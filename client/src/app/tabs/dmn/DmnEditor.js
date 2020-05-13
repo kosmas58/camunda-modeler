@@ -193,7 +193,12 @@ export class DmnEditor extends CachedComponent {
         return this.open(activeSheet.element);
       }
 
-      const initialView = modeler._getInitialView(modeler._views);
+      const initialView = modeler._views.find(({ type }) => type !== 'drd')
+        || modeler._getInitialView(modeler._views);
+
+      if (initialView.type === 'drd') {
+        console.log('close overview');
+      }
 
       this.open(initialView.element);
     }
@@ -736,7 +741,8 @@ export class DmnEditor extends CachedComponent {
 
     const activeView = modeler.getActiveView();
 
-    const hideIfCollapsed = activeView && activeView.type !== 'drd';
+    // const hideIfCollapsed = activeView && activeView.type !== 'drd';
+    const hideIfCollapsed = false;
 
     const activeViewer = modeler.getActiveViewer();
 
